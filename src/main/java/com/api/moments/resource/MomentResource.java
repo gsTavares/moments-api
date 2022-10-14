@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,27 +26,27 @@ public class MomentResource {
     private MomentService service;
 
     @PostMapping(value = "/moment")
-    public Response<Moment> save(@RequestBody Moment moment) {
+    public ResponseEntity<Response<Moment>> save(@RequestBody Moment moment) {
         return service.save(moment);
     }
 
     @PutMapping(value = "/moment")
-    public Response<Moment> update(@RequestBody Moment moment) {
+    public ResponseEntity<Response<Moment>> update(@RequestBody Moment moment) {
         return service.update(moment);
     }
 
     @GetMapping(value = "/moments")
-    public Response<List<Moment>> list() {
+    public ResponseEntity<Response<List<Moment>>> list() {
         return service.list();
     }
 
     @GetMapping(value = "/moments/{idMoment}")
-    public Response<Moment> listById(@PathVariable(value = "idMoment") Long idMoment) {
+    public ResponseEntity<Response<Moment>> listById(@PathVariable(value = "idMoment") Long idMoment) {
         return service.listById(idMoment);
     }
 
     @DeleteMapping(value = "/moments/{idMoment}")
-    public Response<Moment> deleteById(@PathVariable(value = "idMoment") Long idMoment) {
+    public ResponseEntity<Response<Moment>> deleteById(@PathVariable(value = "idMoment") Long idMoment) {
         return service.deleteById(idMoment);
     }
 

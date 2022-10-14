@@ -14,6 +14,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name = "comment")
@@ -24,6 +26,7 @@ public class Comment implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @JsonProperty(access = Access.WRITE_ONLY)
     @JoinColumn(name = "id_moment")
     @ManyToOne
     private Moment moment;
